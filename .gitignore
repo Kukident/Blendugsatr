@@ -1,0 +1,12 @@
+# Editors  #
+*~
+*.#
+
+# Images  #
+*.png
+
+**/*.log*
+
+**/ilt*
+**/dynamips/*
+!**/dynamips/configs/

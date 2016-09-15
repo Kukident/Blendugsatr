@@ -1,6 +1,6 @@
 Proyecto ATR 2016-2017
 
-## Como ver la documentaciÃ³n:
+## Como ver la documentacion:
 
 * Instalar MkDocs: ver [enlace a la web oficial](http://www.mkdocs.org/) o bien ejecutar:
 * Clonar este repositorio

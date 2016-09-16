@@ -3,15 +3,16 @@
     "name": "untitled",
     "project_id": "2bb68c91-744b-4fbe-952d-9db0a2993703",
     "revision": 4,
+    "show_port_names": true,
     "topology": {
         "ellipses": [
             {
                 "color": "#d8ff8e",
-                "height": 509.0,
-                "width": 573.0,
-                "x": -215.0,
-                "y": -215.0,
-                "z": -4.0
+                "height": 684.0,
+                "width": 753.0,
+                "x": -178.0,
+                "y": -177.0,
+                "z": -2.0
             }
         ],
         "links": [
@@ -23,8 +24,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/1",
-                    "x": 4.075580988675142,
-                    "y": 49.6292957720118
+                    "x": 14.075580988675142,
+                    "y": 46.6292957720118
                 },
                 "id": 5,
                 "source_node_id": 1,
@@ -33,8 +34,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/1",
-                    "x": 61.92441901132486,
-                    "y": -5.629295772011801
+                    "x": 45.92441901132486,
+                    "y": -35.6292957720118
                 }
             },
             {
@@ -55,8 +56,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f1/0",
-                    "x": 64.2969687824868,
-                    "y": -2.9098322962649945
+                    "x": 77.2969687824868,
+                    "y": -6.9098322962649945
                 }
             },
             {
@@ -67,8 +68,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/0",
-                    "x": -7.0,
-                    "y": 22.0
+                    "x": -37.0,
+                    "y": -22.0
                 },
                 "id": 7,
                 "source_node_id": 6,
@@ -77,8 +78,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/0",
-                    "x": 73.0,
-                    "y": 22.0
+                    "x": 66.0,
+                    "y": 36.0
                 }
             },
             {
@@ -99,8 +100,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/1",
-                    "x": 72.99920891552199,
-                    "y": 21.748432648330052
+                    "x": 86.99920891552199,
+                    "y": -17.251567351669948
                 }
             },
             {
@@ -129,121 +130,331 @@
                 "description": "Link from Core3 port FastEthernet1/0 to F_Derecha port FastEthernet1/0",
                 "destination_node_id": 3,
                 "destination_port_id": 20,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": 10.811992150990818,
+                    "y": -11.282011773513744
+                },
                 "id": 10,
                 "source_node_id": 8,
-                "source_port_id": 76
+                "source_port_id": 76,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": 55.18800784900918,
+                    "y": 55.282011773513744
+                }
             },
             {
                 "description": "Link from Core2 port FastEthernet1/0 to F_Arriba port FastEthernet2/0",
                 "destination_node_id": 2,
                 "destination_port_id": 15,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f2/0",
+                    "x": 33.65564960957204,
+                    "y": 61.99462618389461
+                },
                 "id": 11,
                 "source_node_id": 7,
-                "source_port_id": 60
+                "source_port_id": 60,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": 34.34435039042796,
+                    "y": -46.99462618389461
+                }
             },
             {
                 "description": "Link from Core2 port FastEthernet1/15 to DHCP port FastEthernet0/0",
                 "destination_node_id": 5,
                 "destination_port_id": 29,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/0",
+                    "x": 33.0,
+                    "y": -18.0
+                },
                 "id": 12,
                 "source_node_id": 7,
-                "source_port_id": 75
+                "source_port_id": 75,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/15",
+                    "x": 31.0,
+                    "y": 58.0
+                }
             },
             {
                 "description": "Link from DHCP port FastEthernet0/1 to Core5 port FastEthernet1/15",
                 "destination_node_id": 10,
                 "destination_port_id": 92,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/15",
+                    "x": 33.0,
+                    "y": -18.0
+                },
                 "id": 13,
                 "source_node_id": 5,
-                "source_port_id": 30
+                "source_port_id": 30,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": 33.0,
+                    "y": 62.0
+                }
             },
             {
                 "description": "Link from F_Izquierda port FastEthernet1/0 to Core4 port FastEthernet1/0",
                 "destination_node_id": 9,
                 "destination_port_id": 93,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": -34.87641913217692,
+                    "y": -23.81264158352647
+                },
                 "id": 14,
                 "source_node_id": 1,
-                "source_port_id": 14
+                "source_port_id": 14,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": 55.87641913217692,
+                    "y": 54.81264158352647
+                }
             },
             {
                 "description": "Link from F_Abajo port FastEthernet0/1 to Core4 port FastEthernet0/1",
                 "destination_node_id": 9,
                 "destination_port_id": 38,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": 46.69596289765644,
+                    "y": 45.90452608339237
+                },
                 "id": 15,
                 "source_node_id": 4,
-                "source_port_id": 8
+                "source_port_id": 8,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": -1.6959628976564431,
+                    "y": 2.0954739166076024
+                }
             },
             {
                 "description": "Link from Core4 port FastEthernet0/0 to Core5 port FastEthernet0/0",
                 "destination_node_id": 10,
                 "destination_port_id": 39,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/0",
+                    "x": -6.13067266126879,
+                    "y": 30.294001270595004
+                },
                 "id": 16,
                 "source_node_id": 9,
-                "source_port_id": 37
+                "source_port_id": 37,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/0",
+                    "x": 70.13067266126879,
+                    "y": -1.294001270595004
+                }
             },
             {
                 "description": "Link from F_Abajo port FastEthernet1/0 to Core6 port FastEthernet1/0",
                 "destination_node_id": 11,
                 "destination_port_id": 94,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": -1.6722237722637487,
+                    "y": 41.94584915931301
+                },
                 "id": 17,
                 "source_node_id": 4,
-                "source_port_id": 17
+                "source_port_id": 17,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": 67.67222377226375,
+                    "y": 2.0541508406869866
+                }
             },
             {
                 "description": "Link from Core5 port FastEthernet1/2 to F_Abajo port FastEthernet2/0",
                 "destination_node_id": 4,
                 "destination_port_id": 18,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f2/0",
+                    "x": 31.379709334290425,
+                    "y": -17.967169754169674
+                },
                 "id": 18,
                 "source_node_id": 10,
-                "source_port_id": 79
+                "source_port_id": 79,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/2",
+                    "x": 34.620290665709575,
+                    "y": 61.967169754169674
+                }
             },
             {
                 "description": "Link from Core5 port FastEthernet0/1 to Core6 port FastEthernet0/1",
                 "destination_node_id": 11,
                 "destination_port_id": 42,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": -6.118049780804796,
+                    "y": 13.646666453057321
+                },
                 "id": 19,
                 "source_node_id": 10,
-                "source_port_id": 40
+                "source_port_id": 40,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": 72.1180497808048,
+                    "y": 30.35333354694268
+                }
             },
             {
                 "description": "Link from Core6 port FastEthernet0/0 to F_Derecha port FastEthernet0/1",
                 "destination_node_id": 3,
                 "destination_port_id": 6,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/1",
+                    "x": 11.821679316614222,
+                    "y": 55.933445640424935
+                },
                 "id": 20,
                 "source_node_id": 11,
-                "source_port_id": 41
+                "source_port_id": 41,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f0/0",
+                    "x": 54.17832068338578,
+                    "y": -11.933445640424935
+                }
             },
             {
                 "description": "Link from F_Izquierda port FastEthernet2/0 to Core2 port FastEthernet1/1",
                 "destination_node_id": 7,
                 "destination_port_id": 61,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/1",
+                    "x": -31.732149946774683,
+                    "y": 37.83506110779686
+                },
                 "id": 21,
                 "source_node_id": 1,
-                "source_port_id": 13
+                "source_port_id": 13,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f2/0",
+                    "x": 69.73214994677468,
+                    "y": 6.164938892203139
+                }
             },
             {
                 "description": "Link from F_Derecha port FastEthernet2/0 to Core2 port FastEthernet1/2",
                 "destination_node_id": 7,
                 "destination_port_id": 62,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/2",
+                    "x": 69.52551529750045,
+                    "y": 38.30603361495555
+                },
                 "id": 22,
                 "source_node_id": 3,
-                "source_port_id": 19
+                "source_port_id": 19,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f2/0",
+                    "x": -3.5255152975004194,
+                    "y": 5.693966385044444
+                }
             },
             {
                 "description": "Link from F_Izquierda port FastEthernet3/0 to Core5 port FastEthernet1/0",
                 "destination_node_id": 10,
                 "destination_port_id": 77,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/0",
+                    "x": -4.5878574915561074,
+                    "y": 8.319613704486642
+                },
                 "id": 23,
                 "source_node_id": 1,
-                "source_port_id": 95
+                "source_port_id": 95,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f3/0",
+                    "x": 70.58785749155612,
+                    "y": 35.68038629551335
+                }
             },
             {
                 "description": "Link from F_Derecha port FastEthernet3/0 to Core5 port FastEthernet1/1",
                 "destination_node_id": 10,
                 "destination_port_id": 78,
+                "destination_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f1/1",
+                    "x": 70.66967646379351,
+                    "y": 8.546544120073747
+                },
                 "id": 24,
                 "source_node_id": 3,
-                "source_port_id": 96
+                "source_port_id": 96,
+                "source_port_label": {
+                    "color": "#ff000000",
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                    "text": "f3/0",
+                    "x": -4.6696764637935075,
+                    "y": 35.45345587992625
+                }
             }
         ],
         "nodes": [
@@ -332,8 +543,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "b1627584-13ec-4a86-8a65-ed5dd7d89297",
-                "x": -248.0,
-                "y": 15.0
+                "x": -208.0,
+                "y": 153.0
             },
             {
                 "description": "Router c3745",
@@ -410,8 +621,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "36b7991f-795c-48be-aecf-e9becfa4c977",
-                "x": 33.0,
-                "y": -230.0
+                "x": 143.0,
+                "y": -197.0
             },
             {
                 "description": "Router c3745",
@@ -498,8 +709,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "c2e80f8b-15ab-4653-b620-b63bc49302b8",
-                "x": 315.0,
-                "y": 17.0
+                "x": 547.0,
+                "y": 143.0
             },
             {
                 "description": "Router c3745",
@@ -576,8 +787,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "a9ef970c-4443-4b08-9427-42024615f62f",
-                "x": 41.0,
-                "y": 265.0
+                "x": 166.0,
+                "y": 491.0
             },
             {
                 "description": "Router c3745",
@@ -637,8 +848,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "f9bed0df-b813-434e-a8d2-2e3f2f56a3bf",
-                "x": 33.0,
-                "y": 13.0
+                "x": 158.0,
+                "y": 163.0
             },
             {
                 "description": "Router c3745",
@@ -708,8 +919,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "9016250d-cd53-45ae-9c91-4a83f2c7941d",
-                "x": -138.0,
-                "y": -142.0
+                "x": -85.0,
+                "y": -50.0
             },
             {
                 "description": "Router c3745",
@@ -719,8 +930,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "Core2",
-                    "x": 10.0,
-                    "y": -25.0
+                    "x": 37.0,
+                    "y": -23.0
                 },
                 "ports": [
                     {
@@ -878,8 +1089,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "554f0b70-6f6b-4e92-b950-4a5b982f2a0e",
-                "x": 35.0,
-                "y": -108.0
+                "x": 158.0,
+                "y": 16.0
             },
             {
                 "description": "Router c3745",
@@ -949,8 +1160,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "e5ef0764-3d0a-4d66-8315-14b2201e2128",
-                "x": 211.0,
-                "y": -139.0
+                "x": 425.0,
+                "y": -35.0
             },
             {
                 "description": "Router c3745",
@@ -960,8 +1171,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "Core4",
-                    "x": 10.0,
-                    "y": -25.0
+                    "x": 31.0,
+                    "y": -24.0
                 },
                 "ports": [
                     {
@@ -1020,8 +1231,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "d1b9244a-24b4-4539-8e1b-0974741a56dd",
-                "x": -149.0,
-                "y": 156.0
+                "x": -90.0,
+                "y": 342.0
             },
             {
                 "description": "Router c3745",
@@ -1190,8 +1401,8 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "1d92f300-3b9c-41c8-b608-ae51df5ce6a7",
-                "x": 35.0,
-                "y": 117.0
+                "x": 163.0,
+                "y": 348.0
             },
             {
                 "description": "Router c3745",
@@ -1261,8 +1472,24 @@
                 "server_id": 1,
                 "type": "C3745",
                 "vm_id": "1ed0f24d-03aa-4649-b866-65ad85932b6b",
-                "x": 227.0,
-                "y": 158.0
+                "x": 410.0,
+                "y": 346.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#ff000000",
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                "text": "192.168.1.16/30",
+                "x": -222.0,
+                "y": 30.0
+            },
+            {
+                "color": "#ff000000",
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                "text": "192.168.1.0/30",
+                "x": -53.0,
+                "y": 66.0
             }
         ],
         "rectangles": [

@@ -7,6 +7,12 @@
 
 
 #En la sucursal principal
+|Nombre | Prefijo de red | Máscara de subred | Anotaciones |
+| - | ------------ | ------------- |------------- | 
+|Pool público | 203.0.113.128  | 255.255.254.0 | Se subdividirá en pools más pequeños que se asignarán a cada router frontera |
+
+
+#Debug
 ```python
 def fn():
     pass

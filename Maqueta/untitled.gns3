@@ -149,28 +149,6 @@
                 }
             },
             {
-                "description": "Link from Core2 port FastEthernet1/15 to DHCP port FastEthernet0/0",
-                "destination_node_id": 5,
-                "destination_port_id": 29,
-                "destination_port_label": {
-                    "color": "#ff000000",
-                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "f0/0",
-                    "x": -16.0,
-                    "y": -29.0
-                },
-                "id": 7,
-                "source_node_id": 7,
-                "source_port_id": 75,
-                "source_port_label": {
-                    "color": "#ff000000",
-                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "f1/15",
-                    "x": 31.0,
-                    "y": 58.0
-                }
-            },
-            {
                 "description": "Link from Core2 port FastEthernet0/1 to Core3 port FastEthernet0/0",
                 "destination_node_id": 8,
                 "destination_port_id": 35,
@@ -300,28 +278,6 @@
                     "text": "f0/0",
                     "x": -29.581357544752564,
                     "y": 28.161659911651896
-                }
-            },
-            {
-                "description": "Link from DHCP port FastEthernet0/1 to Core5 port FastEthernet1/15",
-                "destination_node_id": 10,
-                "destination_port_id": 92,
-                "destination_port_label": {
-                    "color": "#ff000000",
-                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "f1/15",
-                    "x": 38.0,
-                    "y": -43.0
-                },
-                "id": 14,
-                "source_node_id": 5,
-                "source_port_id": 30,
-                "source_port_label": {
-                    "color": "#ff000000",
-                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "f0/1",
-                    "x": 33.0,
-                    "y": 62.0
                 }
             },
             {
@@ -479,7 +435,7 @@
                 }
             },
             {
-                "description": "Link from SW1 port 2 to R1 port FastEthernet0/0",
+                "description": "Link from SW1 port 2 to R_SedePrincipal port FastEthernet0/0",
                 "destination_node_id": 13,
                 "destination_port_id": 166,
                 "destination_port_label": {
@@ -501,7 +457,7 @@
                 }
             },
             {
-                "description": "Link from SW2 port 1 to R1 port FastEthernet0/1",
+                "description": "Link from SW2 port 1 to R_SedePrincipal port FastEthernet0/1",
                 "destination_node_id": 13,
                 "destination_port_id": 167,
                 "destination_port_label": {
@@ -509,7 +465,7 @@
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "f0/1",
                     "x": -13.996142533382226,
-                    "y": 25.44449802036968
+                    "y": 43.44449802036968
                 },
                 "id": 24,
                 "source_node_id": 14,
@@ -760,8 +716,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "2",
-                    "x": 12.426950186864929,
-                    "y": -16.67467478523068
+                    "x": 43.42695018686493,
+                    "y": -48.67467478523068
                 }
             },
             {
@@ -782,8 +738,8 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "5",
-                    "x": -4.5,
-                    "y": 16.0
+                    "x": -30.5,
+                    "y": 15.0
                 }
             },
             {
@@ -1153,67 +1109,6 @@
             },
             {
                 "description": "Router c3745",
-                "dynamips_id": 5,
-                "id": 5,
-                "label": {
-                    "color": "#ff000000",
-                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "DHCP",
-                    "x": 68.0,
-                    "y": 5.0
-                },
-                "ports": [
-                    {
-                        "adapter_number": 0,
-                        "description": "connected to Core2 on port FastEthernet1/15",
-                        "id": 29,
-                        "link_id": 7,
-                        "name": "FastEthernet0/0",
-                        "nio": "NIO_UDP",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "description": "connected to Core5 on port FastEthernet1/15",
-                        "id": 30,
-                        "link_id": 14,
-                        "name": "FastEthernet0/1",
-                        "nio": "NIO_UDP",
-                        "port_number": 1
-                    }
-                ],
-                "properties": {
-                    "auto_delete_disks": true,
-                    "clock_divisor": 8,
-                    "console": 5004,
-                    "disk0": 0,
-                    "disk1": 0,
-                    "exec_area": 64,
-                    "idlemax": 500,
-                    "idlepc": "0x60aa311c",
-                    "idlesleep": 30,
-                    "image": "c3745-adventerprisek9-mz.124-25d.image",
-                    "image_md5sum": "ddbaf74274822b50fa9670e10c75b08f",
-                    "iomem": 5,
-                    "mac_addr": "c405.224c.0000",
-                    "mmap": true,
-                    "name": "DHCP",
-                    "nvram": 256,
-                    "platform": "c3745",
-                    "ram": 256,
-                    "slot0": "GT96100-FE",
-                    "sparsemem": true,
-                    "startup_config": "configs/i5_startup-config.cfg",
-                    "system_id": "FTX0945W0MY"
-                },
-                "server_id": 1,
-                "type": "C3745",
-                "vm_id": "f9bed0df-b813-434e-a8d2-2e3f2f56a3bf",
-                "x": 158.0,
-                "y": 163.0
-            },
-            {
-                "description": "Router c3745",
                 "dynamips_id": 6,
                 "id": 6,
                 "label": {
@@ -1414,11 +1309,8 @@
                     },
                     {
                         "adapter_number": 1,
-                        "description": "connected to DHCP on port FastEthernet0/0",
                         "id": 75,
-                        "link_id": 7,
                         "name": "FastEthernet1/15",
-                        "nio": "NIO_UDP",
                         "port_number": 15
                     }
                 ],
@@ -1726,11 +1618,8 @@
                     },
                     {
                         "adapter_number": 1,
-                        "description": "connected to DHCP on port FastEthernet0/1",
                         "id": 92,
-                        "link_id": 14,
                         "name": "FastEthernet1/15",
-                        "nio": "NIO_UDP",
                         "port_number": 15
                     }
                 ],
@@ -1859,7 +1748,7 @@
                         "vlan": 1
                     },
                     {
-                        "description": "connected to R1 on port FastEthernet0/0",
+                        "description": "connected to R_SedePrincipal on port FastEthernet0/0",
                         "id": 159,
                         "link_id": 23,
                         "name": "2",
@@ -1926,8 +1815,8 @@
                 "label": {
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                    "text": "R1",
-                    "x": 19.484375,
+                    "text": "R_SedePrincipal",
+                    "x": -29.5390625,
                     "y": -25.0
                 },
                 "ports": [
@@ -1971,7 +1860,7 @@
                     "iomem": 5,
                     "mac_addr": "c40c.1b93.0000",
                     "mmap": true,
-                    "name": "R1",
+                    "name": "R_SedePrincipal",
                     "nvram": 256,
                     "platform": "c3745",
                     "ram": 256,
@@ -1995,12 +1884,12 @@
                     "color": "#ff000000",
                     "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                     "text": "SW2",
-                    "x": 37.76804199796959,
-                    "y": -23.585786437626922
+                    "x": -27.23195800203041,
+                    "y": -30.585786437626922
                 },
                 "ports": [
                     {
-                        "description": "connected to R1 on port FastEthernet0/1",
+                        "description": "connected to R_SedePrincipal on port FastEthernet0/1",
                         "id": 185,
                         "link_id": 24,
                         "name": "1",
@@ -2087,8 +1976,8 @@
                 },
                 "server_id": 1,
                 "type": "EthernetSwitch",
-                "x": -734.1214998123089,
-                "y": 160.77669529663686
+                "x": -733.1214998123089,
+                "y": 161.77669529663683
             },
             {
                 "description": "VPCS device",
@@ -3106,20 +2995,6 @@
             {
                 "color": "#ff000000",
                 "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                "text": "192.168.1.72/30",
-                "x": 195.0,
-                "y": 109.0
-            },
-            {
-                "color": "#ff000000",
-                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
-                "text": "192.168.1.76/30",
-                "x": 194.0,
-                "y": 261.0
-            },
-            {
-                "color": "#ff000000",
-                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
                 "text": "Data Center",
                 "x": -1284.1059146347702,
                 "y": -137.36500705120545
@@ -3187,6 +3062,27 @@
                 "text": "203.0.112.0/23",
                 "x": -1025.0,
                 "y": 59.5
+            },
+            {
+                "color": "#ff000000",
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                "text": "20.0.0.0/24",
+                "x": -405.0,
+                "y": 216.5
+            },
+            {
+                "color": "#ff000000",
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                "text": "215.25.135.0/24",
+                "x": 251.0,
+                "y": 581.5
+            },
+            {
+                "color": "#ff000000",
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0",
+                "text": "215.25.136.0/24",
+                "x": 653.0,
+                "y": 216.5
             }
         ],
         "rectangles": [

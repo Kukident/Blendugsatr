@@ -24,3 +24,18 @@ end
 #Si queremos que alguna dirección no se asigne:
 ip dhcp excluded-address A.B.C.D
 ```
+
+#NAT dinámico con sobrecarga
+ Permite utilizar una única dirección publica cuando los equipos de una subred quieren conectarse a Internet. Los comandos son los siguientes:
+
+```python
+# Creamos una lista de acceso
+access-list {100-199} permit ip A.B.C.D {WildCard de la máscara} any
+
+# Creamos NAT asignándole la lista de acceso
+ip nat inside source list {100-199} interface {Interfaz de salida} overload
+
+# Asignamos a cada interfaz su rol (nat inside o nat outside)
+ip nat {inside | outside}
+
+```

@@ -11,6 +11,6 @@
 | Core4 | i9_startup-config.cfg |
 | Core5 | i10_startup-config.cfg |
 | Core6 | i11_startup-config.cfg |
-| R1 | i12_startup-config.cfg |
-| R3 | i13_startup-config.cfg |
-| R2 | i14_startup-config.cfg |
+| R_SedePrincipal | i12_startup-config.cfg |
+| SedeAbajo | i13_startup-config.cfg |
+| SedeDerecha | i14_startup-config.cfg |

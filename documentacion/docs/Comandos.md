@@ -10,14 +10,13 @@ show ip route A.B.C.D  # Muestra la información sobre la ruta a ese host
 #Debugear BGP
 
 ```bash
-#Activar el debug de BGP
-debug bgp all
+debug bgp all							#Activar el debug de BGP
+show ip route {IP del vecino}			#Comprobar que hay conexión con el vecino
+show ip bgp neighbors [IP del vecino]	#Datos sobre vecino/s
+```
 
-# Comprobar que hay conexión con el vecino
-show ip route {IP del vecino}
+#Trusted VPN
 
-# Datos sobre vecino/s
-show ip bgp neighbors [IP del vecino]
-
-
+```bash
+show ip route vrf "Nombre de la VRF"	#Muestra las entradas de la VRF
 ```

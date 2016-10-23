@@ -1,7 +1,5 @@
 # Welcome to Blendugsatr project
 
-Si, me aburro demasiado lo se.
-
 # Semana 1
 
 En esta primera semana los elementos a implementar son los siguientes:

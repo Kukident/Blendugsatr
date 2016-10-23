@@ -11,6 +11,7 @@
 | - | ------------ | ------------- |------------- |
 |Interiores | 192.168.2.X | 255.255.255.252 | Donde X toma valores de cuatro en cuatro (0, 4, 8, ...) |
 |Loopbacks | 192.168.22.X | 255.255.255.255 ||
+|Pool público | 30.0.0.0  | 255.255.254.0 ||
 
 #En la sucursal principal
 |Nombre | Prefijo de red | Máscara de subred | Anotaciones |

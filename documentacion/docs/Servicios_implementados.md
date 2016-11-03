@@ -94,4 +94,49 @@ network {Prefijo a transmitir} mask {Máscara del prefijo}
 neighbor {IP del vecino} distribute-list {1-99} out
 ```
 
+#VPN GRE Multipunto con IPSEC
 
+Spoke Router
+```bash
+
+SedeDerecha(config)#crypto isakmp policy 1
+SedeDerecha(config-isakmp)#authentication pre-share
+SedeDerecha(config-isakmp)#exit
+SedeDerecha(config)#crypto isakmp key cisco47 address 0.0.0.0 0.0.0.0
+SedeDerecha(config)#crypto ipsec transform-set trans2 esp-des esp-md5-hmac
+SedeDerecha(cfg-crypto-trans)#mode transport
+SedeDerecha(cfg-crypto-trans)#exit
+SedeDerecha(config)#crypto ipsec profile vpnprof
+SedeDerecha(ipsec-profile)#set transform-set trans2
+SedeDerecha(ipsec-profile)#exit
+
+SedeDerecha(config)#interface tunnel 0
+SedeDerecha(config-if)#bandwidth 1000
+SedeDerecha(config-if)#ip address 192.168.0.3 255.255.255.0
+SedeDerecha(config-if)#ip mtu 1400
+SedeDerecha(config-if)#ip nhrp authentication test
+SedeDerecha(config-if)#ip nhrp map multicast 30.0.0.2
+SedeDerecha(config-if)#ip nhrp map 192.168.0.1 30.0.0.2
+SedeDerecha(config-if)#ip nhrp network-id 100000
+SedeDerecha(config-if)#ip nhrp holdtime 300
+SedeDerecha(config-if)#ip nhrp nhs 192.168.0.1
+SedeDerecha(config-if)#ip ospf network broadcast
+SedeDerecha(config-if)#ip ospf priority 0
+SedeDerecha(config-if)#delay 1000
+SedeDerecha(config-if)#tunnel source fastEthernet 1/0
+SedeDerecha(config-if)#tunnel mode gre multipoint
+SedeDerecha(config-if)#tunnel key 100000
+SedeDerecha(config-if)#tunnel protection ipsec profile vpnprof
+SedeDerecha(config-if)#exit
+
+SedeDerecha(config)#router ospf 1
+SedeDerecha(config-router)#network 10.0.0.0 0.0.0.255 area 0
+SedeDerecha(config-router)#network 192.168.0.0 0.0.0.255 area 0
+SedeDerecha(config-router)#exit
+
+```
+
+Falta añadir la del HUB Router
+
+
+Fuente: http://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/41940-dmvpn.html

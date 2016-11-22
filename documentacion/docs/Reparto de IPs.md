@@ -16,7 +16,8 @@
 #En la sucursal principal
 |Nombre | Prefijo de red | Máscara de subred | Anotaciones |
 | - | ------------ | ------------- |------------- | 
-|Pool público | 203.0.113.128  | 255.255.254.0 | Asignadas a equipos que proporcionan Servicios Online |
+|Pool público | 203.0.112.0  | 255.255.255.0 | Asignadas a equipos que proporcionan Servicios Online |
+|Direcciones administrativas | 203.0.113.0 | 255.255.255.248 | Hemos dividido nuestro prefijo público en dos, uno para los equipos y otro para usos administrativos |
 |Intranet | 10.0.4.0 | 255.255.255.0 ||
 |Data Center | 10.0.2.0  | 255.255.255.0 ||
 

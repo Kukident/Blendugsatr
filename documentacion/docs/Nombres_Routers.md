@@ -17,6 +17,10 @@
 | FronteraArribaISP2 | i15_startup-config.cfg |
 | FronteraAbajoISP2 | i16_startup-config.cfg |
 | FronteraIzquierdaISP2 | i17_startup-config.cfg |
+| F_Arriba_Internet | i18_startup-config.cfg |
+| F_Abajo_Internet | i19_startup-config.cfg |
+| F_Izquierda_Internet | i20_startup-config.cfg |
+| F_Derecha_Internet | i21_startup-config.cfg |
 | R_SedePrincipalISP2 | i22_startup-config.cfg |
 | NAT_SedePrincipal | i23_startup-config.cfg |
 

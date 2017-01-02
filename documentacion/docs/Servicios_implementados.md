@@ -22,7 +22,7 @@ show mpls interfaces
 show mpls ldp neighbor
 ```
 
-2) Creamos las VRFs en los routers frontera:
+3) Creamos las VRFs en los routers frontera:
 
 ```bash
 #Repetimos estos comandos en todos los routers frontera que participen en la VPN.
@@ -31,7 +31,7 @@ rd XXXXX:XX
 route-target both XXXXX:XX
 ```
 
-3) Asignamos las VRFs a las interfaces del router:
+4) Asignamos las VRFs a las interfaces del router:
 
 ```bash
 interface XX.Z
@@ -41,7 +41,7 @@ ip vrf forwarding {Nombre de la VRF}
 ip add {IP} {Máscara}
 ```
 
-4) Configuramos BGP entre los routers frontera.
+5) Configuramos BGP entre los routers frontera.
 
 ```bash
 router bgp {identificador del AS}
@@ -55,7 +55,7 @@ neighbor {IP de la loopback del vecino} activate
 #Repetimos en el otro vecino
 ```
 
-5) Configuramos BGP entre los routers frontera y el router del cliente.
+6) Configuramos BGP entre los routers frontera y el router del cliente.
 
 ```bash
 #En el router frontera
@@ -140,3 +140,62 @@ Falta añadir la del HUB Router
 
 
 Fuente: http://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/41940-dmvpn.html
+
+#Elección del router de entrada a la sede principal
+
+ Dado que tenemos dos routers desde los que se puede entrar a la sede debemos tener algún mecanismo para indicar por cuál queremos que entre el trafico. 
+El método que vamos a usar es modificar el AS-PATH que comparte el router frontera de backup, para que así tenga un coste superior a las rutas compartidas desde el otro. Estas rutas tendrán un coste superior
+porque el primer parámetro que examina BGP para calcular el coste es el AS-PATH, no el número de saltos.
+
+1. Creamos un route-map en el router de backup
+    
+        route-map {Nombre} permit {Número, por ejemplo 10}
+
+2. Dentro del route-map le indicamos que concatene varias veces nuestro número de AS en el AS-PATH
+
+        set as-path prepend 64501 64501 64501
+
+3. A continuación entramos en BGP, y le indicamos que use con el vecino que queramos el route-map que acabamos de crear.
+
+        router bgp {ID del AS}
+            neighboor {IP del vecino} route-map {Nombre del route-map}
+
+#Incorporación de un Firewall en la sede principal
+
+ El objetivo de este equipo es completar nuestros servicios orientados a 
+la protección antifallos de la sede principal. Nos va a pemitir mantener
+la conectividad con el exterior incluso cuando se caiga la conexión con 
+uno de los ISPs (ya sea porque se caiga el PE del ISP o nuestro CPE). Para conseguirlo hemos seguido estos pasos:
+
+1. Creamos una red /29 entre el firewall y ambos CPE, usando direcciones de nuestro
+pool público
+        
+
+2. Configuramos una conexión BGP entre cada CPE y el firewall
+
+        router bgp 64501
+            neighbor 203.0.113.9 remote-as 64501
+            neighbor 203.0.113.9 next-hop-self
+
+
+3. En el caso del CPE principal redistribuimos las rutas a direcciones
+privadas, ya que son las pertenecientes a la trusted VPN.
+
+        access-list 11 permit 192.168.0.0 0.0.255.255
+        access-list 11 permit 10.0.0.0 0.255.255.255
+        access-list 11 permit 172.16.0.0 0.15.255.255
+        access-list 11 permit 169.254.0.0 0.0.255.255
+        access-list 11 deny   any
+
+        router bgp 64501
+            neighbor 203.0.113.9 distribute-list 11 out
+
+4. En el caso del CPE secundario también redistribuimos algo *Peite completa aquí*
+
+        router bgp 64501
+             bgp redistribute-internal
+
+5. Por último configuramos HSRP en ambos CPEs para protegernos ante caídas de uno de ellos
+
+ Con esas configuraciones conseguimos que el tráfico saliente a una dirección pública vaya por el router adecuado (HSRP) y que el tráfico de la VPN vaya por la principal
+ siempre que sea posible

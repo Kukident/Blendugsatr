@@ -7,7 +7,7 @@ Proyecto ATR 2016-2017
 * Ejecutar
 ```
 $ pip install mkdocs
-$ cd gc-developer-docs
+$ cd /Blendugsatr/documentacion
 $ mkdocs serve
 ```
 * Abrir [http://127.0.0.1:8000/](http://127.0.0.1:8000/) en el navegador web.

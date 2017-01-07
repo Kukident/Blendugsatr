@@ -26,7 +26,7 @@
 #ISP2
 | Topologia         | Fichero               |
 | ----------------- |----------------------:|
-| FronteraArribaISP2 | i15_startup-config.cfg |
+| FronteraArribaISP2 | i13_startup-config.cfg |
 | FronteraAbajoISP2 | i16_startup-config.cfg |
 | FronteraIzquierdaISP2 | i17_startup-config.cfg |
 

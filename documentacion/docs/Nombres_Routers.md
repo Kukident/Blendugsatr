@@ -20,13 +20,13 @@
 | R_SedePrincipal | i12_startup-config.cfg |
 | R_SedePrincipalISP2 | i22_startup-config.cfg |
 | NAT_SedePrincipal | i23_startup-config.cfg |
-| SedeAbajo | i13_startup-config.cfg |
-| SedeDerecha | i14_startup-config.cfg |
+| SedeAbajo (Cisco 7200)| i25_startup-config.cfg |
+| SedeDerecha (Cisco 7200)| i26_startup-config.cfg |
 
 #ISP2
 | Topologia         | Fichero               |
 | ----------------- |----------------------:|
-| FronteraArribaISP2 | i15_startup-config.cfg |
+| FronteraArribaISP2 | i13_startup-config.cfg |
 | FronteraAbajoISP2 | i16_startup-config.cfg |
 | FronteraIzquierdaISP2 | i17_startup-config.cfg |
 

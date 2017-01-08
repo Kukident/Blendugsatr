@@ -96,48 +96,79 @@ neighbor {IP del vecino} distribute-list {1-99} out
 
 #VPN GRE Multipunto con IPSEC
 
-Spoke Router
-```bash
+Como mejora hemos implementado tuneles gre multipunto en todas las sedes, de esta forma conseguimos que el trafico entre sedes secundarias no pase necesariamente por la sede principal. De esta forma liberamos al router de la sede principal de carga, evitando que tenga que desencriptar, encriptar y reenviar trafico que no va dirigido a el.
 
-SedeDerecha(config)#crypto isakmp policy 1
-SedeDerecha(config-isakmp)#authentication pre-share
-SedeDerecha(config-isakmp)#exit
-SedeDerecha(config)#crypto isakmp key cisco47 address 0.0.0.0 0.0.0.0
-SedeDerecha(config)#crypto ipsec transform-set trans2 esp-des esp-md5-hmac
-SedeDerecha(cfg-crypto-trans)#mode transport
-SedeDerecha(cfg-crypto-trans)#exit
-SedeDerecha(config)#crypto ipsec profile vpnprof
-SedeDerecha(ipsec-profile)#set transform-set trans2
-SedeDerecha(ipsec-profile)#exit
+##HUB Router
+1. Configuramos ipsec
 
-SedeDerecha(config)#interface tunnel 0
-SedeDerecha(config-if)#bandwidth 1000
-SedeDerecha(config-if)#ip address 192.168.0.3 255.255.255.0
-SedeDerecha(config-if)#ip mtu 1400
-SedeDerecha(config-if)#ip nhrp authentication test
-SedeDerecha(config-if)#ip nhrp map multicast 30.0.0.2
-SedeDerecha(config-if)#ip nhrp map 192.168.0.1 30.0.0.2
-SedeDerecha(config-if)#ip nhrp network-id 100000
-SedeDerecha(config-if)#ip nhrp holdtime 300
-SedeDerecha(config-if)#ip nhrp nhs 192.168.0.1
-SedeDerecha(config-if)#ip ospf network broadcast
-SedeDerecha(config-if)#ip ospf priority 0
-SedeDerecha(config-if)#delay 1000
-SedeDerecha(config-if)#tunnel source fastEthernet 1/0
-SedeDerecha(config-if)#tunnel mode gre multipoint
-SedeDerecha(config-if)#tunnel key 100000
-SedeDerecha(config-if)#tunnel protection ipsec profile vpnprof
-SedeDerecha(config-if)#exit
+		crypto isakmp policy 1
+		 authentication pre-share
+		crypto isakmp key cisco47 address 0.0.0.0 0.0.0.0
+		crypto ipsec transform-set trans2 esp-des esp-md5-hmac
+		 mode transport
+		crypto ipsec profile vpnprof
+		 set transform-set trans2t
 
-SedeDerecha(config)#router ospf 1
-SedeDerecha(config-router)#network 10.0.0.0 0.0.0.255 area 0
-SedeDerecha(config-router)#network 192.168.0.0 0.0.0.255 area 0
-SedeDerecha(config-router)#exit
+2. Configuramos el tunel
 
-```
+		interface tunnel 0
+		 bandwidth 1000
+		 ip address 192.168.0.1 255.255.255.0	#IP dentro del tunel del hub router
+		 ip mtu 1400
+		 ip nhrp authentication test
+		 ip nhrp map multicast dynamic
+		 ip nhrp network-id 100000
+		 ip nhrp holdtime 600
+		 ip ospf network broadcast
+		 ip ospf priority 2
+		 delay 1000
+		 tunnel source fastEthernet 0/0
+		 tunnel mode gre multipoint
+		 tunnel key 100000
+		 tunnel protection ipsec profile vpnprof
 
-Falta añadir la del HUB Router
+3. Configuramos ospf que se utilizara dentro del tunel para distribuir las ips de cada sede y las ip del resto de los nodos del tunel
 
+		router ospf 1
+		 network 10.0.0.0 0.0.0.255 area 0	#Esto luego sera necesario quitarlo a la hora de incorporar el firewall de la sede principal
+		 network 192.168.0.0 0.0.0.255 area 0
+
+##Spoke Router
+1. Configuramos ipsec
+
+		crypto isakmp policy 1
+		 authentication pre-share
+		crypto isakmp key cisco47 address 0.0.0.0 0.0.0.0
+		crypto ipsec transform-set trans2 esp-des esp-md5-hmac
+		 mode transport
+		crypto ipsec profile vpnprof
+		 set transform-set trans2t
+
+2. Configuramos el tunel
+
+		interface tunnel 0
+		 bandwidth 1000
+		 ip address 192.168.0.3 255.255.255.0	#IP dentro del tunel del spoke router
+		 ip mtu 1400
+		 ip nhrp authentication test
+		 ip nhrp map multicast 30.0.0.2		#IP del router backup de la sede
+		 ip nhrp map 192.168.0.1 30.0.0.2	
+		 ip nhrp network-id 100000
+		 ip nhrp holdtime 300
+		 ip nhrp nhs 192.168.0.1
+		 ip ospf network broadcast
+		 ip ospf priority 0
+		 delay 1000
+		 tunnel source fastEthernet 1/0
+		 tunnel mode gre multipoint
+		 tunnel key 100000
+		 tunnel protection ipsec profile vpnprof
+
+3. Configuramos ospf que se utilizara dentro del tunel para distribuir las ips de cada sede y las ip del resto de los nodos del tunel
+
+		router ospf 1
+		 network 10.0.0.0 0.0.0.255 area 0
+		 network 192.168.0.0 0.0.0.255 area 0
 
 Fuente: http://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/41940-dmvpn.html
 
@@ -199,3 +230,82 @@ privadas, ya que son las pertenecientes a la trusted VPN.
 
  Con esas configuraciones conseguimos que el tráfico saliente a una dirección pública vaya por el router adecuado (HSRP) y que el tráfico de la VPN vaya por la principal
  siempre que sea posible
+
+
+## 6RD
+
+Para implementar IPv6 de forma sencilla sin migrar el core de IPv4 a IPv6 utilizamos 6RD. Se basa en encapsular trafico IPv6 en paquetes IPv4.
+Utiliza tuneles multipunto para conectar los routers de los clientes a un router frontera conectado a una red IPv6.
+Nota: Solo es necesario IOS 15 para implementar esta funcionalidad
+
+#### Border Router
+
+1. Activamos IPv6 en el router
+
+   	     ipv6 unicast-routing
+	     ipv6 cef
+
+2. Creamos una Loopback con una ip publica. (Necesaria, ya que si no los paquetes irian con ips privadas) y guardamos prefijo que usa 6rd
+
+   	     ipv6 general-prefix DELEGATED_PREFIX 6rd Tunnel0
+	     interface Loopback1
+	      ip address 30.0.255.2 255.255.255.255
+
+3. Creamos el tunel
+
+   	      interface Tunnel1
+	       no ip address
+	       no ip redirects
+	       ipv6 address DELEGATED_PREFIX ::/128 anycast
+	       tunnel source Loopback1
+	       tunnel mode ipv6ip 6rd
+	       tunnel 6rd ipv4 prefix-len 16
+	       tunnel 6rd prefix 2001:AAAA::/40
+
+4. Enrutamos el trafico IPv6 que llega al router por el tunel que acabamos de crear
+
+   	     ipv6 route 2001:AAAA::/40 Tunnel1
+
+
+##### CE Router
+
+1. Activamos IPv6 en el router
+
+   	     ipv6 unicast-routing
+	     ipv6 cef
+
+2. Guardamos prefijo que usa 6rd
+
+   	     ipv6 general-prefix DELEGATED_PREFIX 6rd Tunnel0
+	       
+3. Creamos el tunel
+
+   	      interface Tunnel1
+	       no ip address
+	       no ip redirects
+	       ipv6 enable
+	       tunnel source FastEthernet1/0
+	       tunnel mode ipv6ip 6rd
+	       tunnel 6rd ipv4 prefix-len 16
+	       tunnel 6rd prefix 2001:AAAA::/40
+	       tunnel 6rd br 30.0.255.2
+
+4. Le damos una IPv6 a la interfaz interna del router
+
+          ipv6 address DELEGATED_PREFIX ::/64 eui-64
+	
+4. Enrutamos el trafico IPv6 que llega al router por el tunel que acabamos de crear
+
+   	     ipv6 route 2001:AAAA::/40 Tunnel1
+	     ipv6 route ::/0 Tunnel1 2001:AAAA:FF:200::
+
+
+##### Autoconfiguracion equipos
+
+Una vez hecho todo esto, los equipos restantes se configuran solos automaticamente. Cogiendo el prefijo adecuadamente.
+
+### Enlaces
+
++ [http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/enterprise-ipv6-solution/whitepaper_c11-665758.html](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/enterprise-ipv6-solution/whitepaper_c11-665758.html)
++ [http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/interface/configuration/xe-3s/ir-xe-3s-book/ip6-6rd-tunls-xe.pdf](http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/interface/configuration/xe-3s/ir-xe-3s-book/ip6-6rd-tunls-xe.pdf)
++ [https://meetings.apnic.net/__data/assets/pdf_file/0017/31148/APRICOT-6rd-final.pdf](https://meetings.apnic.net/__data/assets/pdf_file/0017/31148/APRICOT-6rd-final.pdf)

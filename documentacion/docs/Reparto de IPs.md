@@ -11,6 +11,8 @@
 | - | ------------ | ------------- |------------- |
 |Interiores | 192.168.2.X | 255.255.255.252 | Donde X toma valores de cuatro en cuatro (0, 4, 8, ...) |
 |Loopbacks | 192.168.22.X | 255.255.255.255 ||
+|Loopback 6rd| 30.0.255.2 | 255.255.255.255 | Necesaria para el funcionamiento del 6rd|
+|Loopback xDSL| 21.0.0.2 | 255.255.255.255 | Necesaria xDSL|
 |Pool público | 30.0.0.0  | 255.255.254.0 ||
 
 #En la sucursal principal

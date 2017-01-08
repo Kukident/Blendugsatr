@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Servicios implementados - Blendugsatr</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Servicios implementados";
+    var mkdocs_page_input_path = "Servicios_implementados.md";
+    var mkdocs_page_url = "/Servicios_implementados/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Blendugsatr</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Anotaciones/">Anotaciones</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Comandos/">Comandos</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Nombres_Routers/">Nombres Routers</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Notas/">Notas</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Protocolos/">Protocolos</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Pruebas/">Pruebas</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Reparto de IPs/">Reparto de IPs</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Servicios implementados</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#trusted-vpn">Trusted VPN</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#vpn-gre-multipunto-con-ipsec">VPN GRE Multipunto con IPSEC</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#eleccion-del-router-de-entrada-a-la-sede-principal">Elección del router de entrada a la sede principal</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#incorporacion-de-un-firewall-en-la-sede-principal">Incorporación de un Firewall en la sede principal</a></li>
+                
+                    <li><a class="toctree-l4" href="#6rd">6RD</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Blendugsatr</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Servicios implementados</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="trusted-vpn">Trusted VPN</h1>
+<p>Hemos implementado una trusted VPN entre las distintas sedes de la empresa. Los pasos a seguir son los siguientes:</p>
+<p>1) Creamos dos subinterfaces en el enlace entre frontera y cliente.</p>
+<pre><code class="bash">interface XX.Y
+ip address {IP que queramos usar para tráfico normal} {Máscara}
+
+interface XX.Z
+ip address {IP de la conexión BGP para la VRF} {Máscara}
+</code></pre>
+
+<p>2) Configuramos MPLS en las interfaces de los routers del ISP:</p>
+<pre><code class="bash">interface XX
+mpls ip
+
+#Comandos de comprobación
+show mpls interfaces
+show mpls ldp neighbor
+</code></pre>
+
+<p>3) Creamos las VRFs en los routers frontera:</p>
+<pre><code class="bash">#Repetimos estos comandos en todos los routers frontera que participen en la VPN.
+ip vrf {Nombre de la VRF}
+rd XXXXX:XX
+route-target both XXXXX:XX
+</code></pre>
+
+<p>4) Asignamos las VRFs a las interfaces del router:</p>
+<pre><code class="bash">interface XX.Z
+ip vrf forwarding {Nombre de la VRF}
+
+#Debemos asignar de nuevo la ip a la interfaz
+ip add {IP} {Máscara}
+</code></pre>
+
+<p>5) Configuramos BGP entre los routers frontera.</p>
+<pre><code class="bash">router bgp {identificador del AS}
+
+neighbor {IP de la loopback del vecino} remote-as {identificador del AS}
+neighbor {IP de la loopback del vecino} update-source loopback 0
+
+address-family vpnv4
+neighbor {IP de la loopback del vecino} activate
+
+#Repetimos en el otro vecino
+</code></pre>
+
+<p>6) Configuramos BGP entre los routers frontera y el router del cliente.</p>
+<pre><code class="bash">#En el router frontera
+router bgp {identificador del AS}
+
+address-family ipv4 vrf Blendugs
+neighbor {IP de la subinterfaz VRF del vecino} remote-as {ID del AS del vecino}
+neighbor {IP de la subinterfaz VRF del vecino} activate
+
+#En el router del cliente
+router bgp {Identificador del AS}
+
+#Se repite tantas veces como redes se quieran compartir
+network {Prefijo de la VPN} mask {Máscara del prefjo}
+
+neighbor {IP de la subinterfaz VRF del router frontera} remote-as {ID del AS del ISP}
+</code></pre>
+
+<p>Opcional: Filtrado de las rutas que compartes con cada vecino</p>
+<pre><code class="bash">
+#En el router del cliente
+
+#Rutas que NO queremos enviar, una línea por cada
+access-list {1-99} deny {Prefijo que no queremos enviar} {Wildcard de la máscara}
+access-list {1-99} deny {Prefijo que no queremos enviar} {Wildcard de la máscara}
+access-list {1-99} permit any
+
+router bgp {ID del AS}
+
+#En caso de no haberlo hecho ya añadir todas las rutas que queramos transmitir
+network {Prefijo a transmitir} mask {Máscara del prefijo}
+
+#Le asignamos una lista de distribución que filtre las direcciones que se le envían a ese vecino
+neighbor {IP del vecino} distribute-list {1-99} out
+</code></pre>
+
+<h1 id="vpn-gre-multipunto-con-ipsec">VPN GRE Multipunto con IPSEC</h1>
+<p>Spoke Router</p>
+<pre><code class="bash">
+SedeDerecha(config)#crypto isakmp policy 1
+SedeDerecha(config-isakmp)#authentication pre-share
+SedeDerecha(config-isakmp)#exit
+SedeDerecha(config)#crypto isakmp key cisco47 address 0.0.0.0 0.0.0.0
+SedeDerecha(config)#crypto ipsec transform-set trans2 esp-des esp-md5-hmac
+SedeDerecha(cfg-crypto-trans)#mode transport
+SedeDerecha(cfg-crypto-trans)#exit
+SedeDerecha(config)#crypto ipsec profile vpnprof
+SedeDerecha(ipsec-profile)#set transform-set trans2
+SedeDerecha(ipsec-profile)#exit
+
+SedeDerecha(config)#interface tunnel 0
+SedeDerecha(config-if)#bandwidth 1000
+SedeDerecha(config-if)#ip address 192.168.0.3 255.255.255.0
+SedeDerecha(config-if)#ip mtu 1400
+SedeDerecha(config-if)#ip nhrp authentication test
+SedeDerecha(config-if)#ip nhrp map multicast 30.0.0.2
+SedeDerecha(config-if)#ip nhrp map 192.168.0.1 30.0.0.2
+SedeDerecha(config-if)#ip nhrp network-id 100000
+SedeDerecha(config-if)#ip nhrp holdtime 300
+SedeDerecha(config-if)#ip nhrp nhs 192.168.0.1
+SedeDerecha(config-if)#ip ospf network broadcast
+SedeDerecha(config-if)#ip ospf priority 0
+SedeDerecha(config-if)#delay 1000
+SedeDerecha(config-if)#tunnel source fastEthernet 1/0
+SedeDerecha(config-if)#tunnel mode gre multipoint
+SedeDerecha(config-if)#tunnel key 100000
+SedeDerecha(config-if)#tunnel protection ipsec profile vpnprof
+SedeDerecha(config-if)#exit
+
+SedeDerecha(config)#router ospf 1
+SedeDerecha(config-router)#network 10.0.0.0 0.0.0.255 area 0
+SedeDerecha(config-router)#network 192.168.0.0 0.0.0.255 area 0
+SedeDerecha(config-router)#exit
+
+</code></pre>
+
+<p>Falta añadir la del HUB Router</p>
+<p>Fuente: http://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/41940-dmvpn.html</p>
+<h1 id="eleccion-del-router-de-entrada-a-la-sede-principal">Elección del router de entrada a la sede principal</h1>
+<p>Dado que tenemos dos routers desde los que se puede entrar a la sede debemos tener algún mecanismo para indicar por cuál queremos que entre el trafico. 
+El método que vamos a usar es modificar el AS-PATH que comparte el router frontera de backup, para que así tenga un coste superior a las rutas compartidas desde el otro. Estas rutas tendrán un coste superior
+porque el primer parámetro que examina BGP para calcular el coste es el AS-PATH, no el número de saltos.</p>
+<ol>
+<li>
+<p>Creamos un route-map en el router de backup</p>
+<pre><code>route-map {Nombre} permit {Número, por ejemplo 10}
+</code></pre>
+</li>
+<li>
+<p>Dentro del route-map le indicamos que concatene varias veces nuestro número de AS en el AS-PATH</p>
+<pre><code>set as-path prepend 64501 64501 64501
+</code></pre>
+</li>
+<li>
+<p>A continuación entramos en BGP, y le indicamos que use con el vecino que queramos el route-map que acabamos de crear.</p>
+<pre><code>router bgp {ID del AS}
+    neighboor {IP del vecino} route-map {Nombre del route-map}
+</code></pre>
+</li>
+</ol>
+<h1 id="incorporacion-de-un-firewall-en-la-sede-principal">Incorporación de un Firewall en la sede principal</h1>
+<p>El objetivo de este equipo es completar nuestros servicios orientados a 
+la protección antifallos de la sede principal. Nos va a pemitir mantener
+la conectividad con el exterior incluso cuando se caiga la conexión con 
+uno de los ISPs (ya sea porque se caiga el PE del ISP o nuestro CPE). Para conseguirlo hemos seguido estos pasos:</p>
+<ol>
+<li>
+<p>Creamos una red /29 entre el firewall y ambos CPE, usando direcciones de nuestro
+pool público</p>
+</li>
+<li>
+<p>Configuramos una conexión BGP entre cada CPE y el firewall</p>
+<pre><code>router bgp 64501
+    neighbor 203.0.113.9 remote-as 64501
+    neighbor 203.0.113.9 next-hop-self
+</code></pre>
+</li>
+<li>
+<p>En el caso del CPE principal redistribuimos las rutas a direcciones
+privadas, ya que son las pertenecientes a la trusted VPN.</p>
+<pre><code>access-list 11 permit 192.168.0.0 0.0.255.255
+access-list 11 permit 10.0.0.0 0.255.255.255
+access-list 11 permit 172.16.0.0 0.15.255.255
+access-list 11 permit 169.254.0.0 0.0.255.255
+access-list 11 deny   any
+
+router bgp 64501
+    neighbor 203.0.113.9 distribute-list 11 out
+</code></pre>
+</li>
+<li>
+<p>En el caso del CPE secundario también redistribuimos algo <em>Peite completa aquí</em></p>
+<pre><code>router bgp 64501
+     bgp redistribute-internal
+</code></pre>
+</li>
+<li>
+<p>Por último configuramos HSRP en ambos CPEs para protegernos ante caídas de uno de ellos</p>
+</li>
+</ol>
+<p>Con esas configuraciones conseguimos que el tráfico saliente a una dirección pública vaya por el router adecuado (HSRP) y que el tráfico de la VPN vaya por la principal
+ siempre que sea posible</p>
+<h2 id="6rd">6RD</h2>
+<p>Para implementar IPv6 de forma sencilla sin migrar el core de IPv4 a IPv6 utilizamos 6RD. Se basa en encapsular trafico IPv6 en paquetes IPv4.
+Utiliza tuneles multipunto para conectar los routers de los clientes a un router frontera conectado a una red IPv6.
+Nota: Solo es necesario IOS 15 para implementar esta funcionalidad</p>
+<h4 id="border-router">Border Router</h4>
+<ol>
+<li>
+<p>Activamos IPv6 en el router</p>
+<pre><code> ipv6 unicast-routing
+ ipv6 cef
+</code></pre>
+</li>
+<li>
+<p>Creamos una Loopback con una ip publica. (Necesaria, ya que si no los paquetes irian con ips privadas) y guardamos prefijo que usa 6rd</p>
+<pre><code> ipv6 general-prefix DELEGATED_PREFIX 6rd Tunnel0
+ interface Loopback1
+  ip address 30.0.255.2 255.255.255.255
+</code></pre>
+</li>
+<li>
+<p>Creamos el tunel</p>
+<pre><code>  interface Tunnel1
+   no ip address
+   no ip redirects
+   ipv6 address DELEGATED_PREFIX ::/128 anycast
+   tunnel source Loopback1
+   tunnel mode ipv6ip 6rd
+   tunnel 6rd ipv4 prefix-len 16
+   tunnel 6rd prefix 2001:AAAA::/40
+</code></pre>
+</li>
+<li>
+<p>Enrutamos el trafico IPv6 que llega al router por el tunel que acabamos de crear</p>
+<pre><code> ipv6 route 2001:AAAA::/40 Tunnel1
+</code></pre>
+</li>
+</ol>
+<h5 id="ce-router">CE Router</h5>
+<ol>
+<li>
+<p>Activamos IPv6 en el router</p>
+<pre><code> ipv6 unicast-routing
+ ipv6 cef
+</code></pre>
+</li>
+<li>
+<p>Guardamos prefijo que usa 6rd</p>
+<pre><code> ipv6 general-prefix DELEGATED_PREFIX 6rd Tunnel0
+</code></pre>
+</li>
+<li>
+<p>Creamos el tunel</p>
+<pre><code>  interface Tunnel1
+   no ip address
+   no ip redirects
+   ipv6 enable
+   tunnel source FastEthernet1/0
+   tunnel mode ipv6ip 6rd
+   tunnel 6rd ipv4 prefix-len 16
+   tunnel 6rd prefix 2001:AAAA::/40
+   tunnel 6rd br 30.0.255.2
+</code></pre>
+</li>
+<li>
+<p>Le damos una IPv6 a la interfaz interna del router</p>
+<pre><code>  ipv6 address DELEGATED_PREFIX ::/64 eui-64
+</code></pre>
+</li>
+<li>
+<p>Enrutamos el trafico IPv6 que llega al router por el tunel que acabamos de crear</p>
+<pre><code> ipv6 route 2001:AAAA::/40 Tunnel1
+ ipv6 route ::/0 Tunnel1 2001:AAAA:FF:200::
+</code></pre>
+</li>
+</ol>
+<h5 id="autoconfiguracion-equipos">Autoconfiguracion equipos</h5>
+<p>Una vez hecho todo esto, los equipos restantes se configuran solos automaticamente. Cogiendo el prefijo adecuadamente.</p>
+<h3 id="enlaces">Enlaces</h3>
+<ul>
+<li><a href="http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/enterprise-ipv6-solution/whitepaper_c11-665758.html">http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/enterprise-ipv6-solution/whitepaper_c11-665758.html</a></li>
+<li><a href="http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/interface/configuration/xe-3s/ir-xe-3s-book/ip6-6rd-tunls-xe.pdf">http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/interface/configuration/xe-3s/ir-xe-3s-book/ip6-6rd-tunls-xe.pdf</a></li>
+<li><a href="https://meetings.apnic.net/__data/assets/pdf_file/0017/31148/APRICOT-6rd-final.pdf">https://meetings.apnic.net/__data/assets/pdf_file/0017/31148/APRICOT-6rd-final.pdf</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Reparto de IPs/" class="btn btn-neutral" title="Reparto de IPs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Reparto de IPs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

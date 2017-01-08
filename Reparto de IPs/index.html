@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Reparto de IPs - Blendugsatr</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Reparto de IPs";
+    var mkdocs_page_input_path = "Reparto de IPs.md";
+    var mkdocs_page_url = "/Reparto de IPs/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Blendugsatr</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Anotaciones/">Anotaciones</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Comandos/">Comandos</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Nombres_Routers/">Nombres Routers</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Notas/">Notas</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Protocolos/">Protocolos</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Pruebas/">Pruebas</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Reparto de IPs</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#en-el-isp">En el ISP</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#en-el-isp-secundario">En el ISP secundario</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#en-la-sucursal-principal">En la sucursal principal</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#en-la-sucursal-secundaria-derecha">En la sucursal secundaria (derecha)</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#en-la-sucursal-secundaria-abajo">En la sucursal secundaria (abajo)</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Servicios_implementados/">Servicios implementados</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Blendugsatr</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Reparto de IPs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="en-el-isp">En el ISP</h1>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Prefijo de red</th>
+<th>Máscara de subred</th>
+<th>Anotaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interiores</td>
+<td>192.168.1.X</td>
+<td>255.255.255.252</td>
+<td>Donde X toma valores de cuatro en cuatro (0, 4, 8, ...)</td>
+</tr>
+<tr>
+<td>Loopbacks</td>
+<td>192.168.11.X</td>
+<td>255.255.255.255</td>
+<td></td>
+</tr>
+<tr>
+<td>Pool público</td>
+<td>20.0.0.0</td>
+<td>255.255.254.0</td>
+<td>En cada enlace con un cliente del servicio Trusted VPN se usaran dos subredes, una para tráfico normal y otro para la VRF</td>
+</tr>
+</tbody>
+</table>
+<h1 id="en-el-isp-secundario">En el ISP secundario</h1>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Prefijo de red</th>
+<th>Máscara de subred</th>
+<th>Anotaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interiores</td>
+<td>192.168.2.X</td>
+<td>255.255.255.252</td>
+<td>Donde X toma valores de cuatro en cuatro (0, 4, 8, ...)</td>
+</tr>
+<tr>
+<td>Loopbacks</td>
+<td>192.168.22.X</td>
+<td>255.255.255.255</td>
+<td></td>
+</tr>
+<tr>
+<td>Loopback 6rd</td>
+<td>30.0.255.2</td>
+<td>255.255.255.255</td>
+<td>Necesaria para el funcionamiento del 6rd</td>
+</tr>
+<tr>
+<td>Loopback xDSL</td>
+<td>21.0.0.2</td>
+<td>255.255.255.255</td>
+<td>Necesaria xDSL</td>
+</tr>
+<tr>
+<td>Pool público</td>
+<td>30.0.0.0</td>
+<td>255.255.254.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="en-la-sucursal-principal">En la sucursal principal</h1>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Prefijo de red</th>
+<th>Máscara de subred</th>
+<th>Anotaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pool público</td>
+<td>203.0.112.0</td>
+<td>255.255.255.0</td>
+<td>Asignadas a equipos que proporcionan Servicios Online</td>
+</tr>
+<tr>
+<td>Direcciones administrativas</td>
+<td>203.0.113.0</td>
+<td>255.255.255.248</td>
+<td>Hemos dividido nuestro prefijo público en dos, uno para los equipos y otro para usos administrativos</td>
+</tr>
+<tr>
+<td>Intranet</td>
+<td>10.0.4.0</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td>Data Center</td>
+<td>10.0.2.0</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="en-la-sucursal-secundaria-derecha">En la sucursal secundaria (derecha)</h1>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Prefijo de red</th>
+<th>Máscara de subred</th>
+<th>Anotaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intranet</td>
+<td>10.0.0.0</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="en-la-sucursal-secundaria-abajo">En la sucursal secundaria (abajo)</h1>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Prefijo de red</th>
+<th>Máscara de subred</th>
+<th>Anotaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intranet</td>
+<td>10.0.3.0</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Servicios_implementados/" class="btn btn-neutral float-right" title="Servicios implementados">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Pruebas/" class="btn btn-neutral" title="Pruebas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Pruebas/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Servicios_implementados/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

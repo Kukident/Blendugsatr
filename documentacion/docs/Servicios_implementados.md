@@ -221,10 +221,24 @@ privadas, ya que son las pertenecientes a la trusted VPN.
         router bgp 64501
             neighbor 203.0.113.9 distribute-list 11 out
 
-4. En el caso del CPE secundario también redistribuimos algo *Peite completa aquí*
+4. En el caso del CPE secundario también redistribuimos lo que aprendemos de BGP por el tunel mediante OSPF y viceversa.
 
-        router bgp 64501
+      	route-map bgp-into-ospf permit 10
+	 	   match ip address 50
+		   set metric 200
+		   set metric-type type-2
+
+		access-list 50 permit 10.0.4.0 0.0.0.255
+		access-list 50 permit 10.0.2.0 0.0.0.255
+
+
+      	router ospf 1
+	       redistribute bgp 64501 subnets route-map bgp-into-ospf #Necesario para que la rutas
+	        enviadas por el tunel mediante ospf sean menos prioritarias que las aprendidas por la vpn mpls
+
+      	router bgp 64501
              bgp redistribute-internal
+	     redistribute ospf 1
 
 5. Por último configuramos HSRP en ambos CPEs para protegernos ante caídas de uno de ellos
 
